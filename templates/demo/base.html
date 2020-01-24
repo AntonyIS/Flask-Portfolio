@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap/css/bootstrap.min.css')}}">
+        <title>{% block title %}{{ title }}{% endblock title %}</title>
+        </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light mr-auto" >
+              <a class="navbar-brand" href="/"></a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav" id="navlinks">
+                    <a class="nav-item nav-link" href="{{ url_for('index') }}" style="color: #ffffff">Home</a>
+                            <a class="nav-item nav-link" href="#" style="color: #ffffff">About</a>
+                            <a class="nav-item nav-link" href="#"  style="color: #ffffff">Contact</a>
+                            <a class="nav-item nav-link" href="{{ url_for('project') }}"  style="color: #ffffff">Project</a>
+                        {% if not current_user.is_authenticated %}
+
+                            <form action="{{ url_for('login') }}" method="post" class="ml-auto form-inline">
+                                <div class="form-group">
+                                    <input type="email" name="email" class="form-control" style="color: #ffffff;background-color: rgba(0,0,0,0.63)">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="password" class="form-control" style="color: #ffffff;background-color:rgba(0,0,0,0.63)">
+                                </div>
+                                <button type="submit" class="btn btn-info">Login</button>
+                            </form>
+                        {% else %}
+                            <a class="nav-item nav-link" href="{{ url_for('dashboard') }}"  style="color: #ffffff">Dashboard</a>
+                            <a class="nav-item nav-link" href="{{ url_for('logout') }}"  style="color: #ffffff">Logout</a>
+                        {%endif %}
+                </div>
+
+              </div>
+            </nav>
+
+
+        </header>
+        {% block content %}
+            {% block body %}
+            {% endblock body %}
+            {% block footer %}
+                 <footer>
+                    <div class="container-fluid " id="footer">
+
+                        <div class="row " >
+                            <div class="col col-sm-8 col-md-8 col-lg-7 col-xl-8 aside_1">
+                                <h4>Developed and Maintained by <span id="me">Antony Injila</span></h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem doloribus impedit ipsa
+                                    neque sequi! Atque fugiat harum molestiae ut vero! Debitis eaque excepturi in, laborum
+                                    libero molestiae pariatur. Error, et.
+                                </p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem doloribus impedit ipsa
+                                    neque sequi! Atque fugiat harum molestiae ut vero! Debitis eaque excepturi in, laborum
+                                    libero molestiae pariatur. Error, et.
+                                </p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem doloribus impedit ipsa
+                                    neque sequi! Atque fugiat harum molestiae ut vero! Debitis eaque excepturi in, laborum
+                                    libero molestiae pariatur. Error, et.
+                                </p>
+                            </div>
+                            <div class="col col-sm-4 col-md-4 col-lg-5 col-xl-4 aside_2">
+                                <form action="">
+                                    <fieldset>
+                                        <h2 class="">Contact me</h2>
+                                        <h4 class=""></h4>
+                                        <div class="form-group">
+                                            <label for="">Name</label>
+                                            <input type="text" name="name" placeholder="Enter your name" class="form-control">
+                                        </div>
+                                         <div class="form-group">
+                                            <label for="">Email</label>
+                                            <input type="email" name="name" placeholder="Enter your email" class="form-control">
+                                        </div>
+                                        <textarea name="message" >Comment</textarea>
+                                        <br>
+                                        <a href="#" class="btn btn-info btn-send">Send</a>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </footer>
+            {% endblock footer %}
+        {% endblock content %}
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </body>
+</html>

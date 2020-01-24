@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% block title %}{{ title }}{% endblock title %}
+
+
+{% block body %}
+<header id="image-section">
+    <h1 class="title-content">I am Antony Injila</h1>
+    <p>Learning Facilitator and Developer(<span>Python,JavaScript, Php, Java</span>) eMobilis Mobile Technology Institute</p>
+    <button>Learn more</button>
+    <button>Take action</button>
+    <div class="message">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <ul class=flashes>
+            {% for message in messages %}
+              <li class="{{category}}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+</header>
+
+<section id="section-2">
+    <div class="container">
+        <h2 class="content-title">My Stack</h2>
+        <div class="row" >
+            <div class="col col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                <div class="cardy">
+                    <img src="static/images/logos/python.jpg" alt="" class="top-image">
+                    <div class="cardy-body">
+                        <h2 class="card-title">Python</h2>
+                        <p class="card7-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aspernatur .</p>
+                        <button>View</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                <div class="cardy">
+                    <img src="static/images/logos/java3.png" alt="" class="top-image">
+                    <div class="cardy-body">
+                        <h2 class="card-title">Java</h2>
+                        <p class="card7-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aspernatur .</p>
+                        <button>View</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                <div class="cardy">
+                    <img src="static/images/logos/js2.png" alt="" class="top-image">
+                    <div class="cardy-body">
+                        <h2 class="card-title">JavaScript</h2>
+                        <p class="card7-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aspernatur .</p>
+                        <button>View</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                <div class="cardy">
+                    <img src="static/images/logos/kt2.jpg" alt="" class="top-image">
+                    <div class="cardy-body">
+                        <h2 class="card-title">Kotlin</h2>
+                        <p class="card-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aspernatur .</p>
+                        <button>View</button>
+                    </div>
+                </div>
+            </div>
+            <section id="more">
+                <h1 class="content-title">Programming Stack</h1>
+                <p class="card-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab cum distinctio earum facere pariatur, repellat saepe sequi voluptates! Architecto asperiores dolores maiores maxime natus, obcaecati qui quo sapiente tempora voluptates!</p>
+                <button>Learn more</button>
+            </section>
+        </div>
+    </div>
+</section>
+<section id="section-1">
+    <div class="container">
+        <h2 class="content-title"><a href="{{ url_for('project_list') }}">Projects</a></h2>
+        <div class="row" >
+            {% if projects %}
+                {% for project in projects %}
+                    <div class="col col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                    <div class="cardy">
+                        <a href="/project/detail/{{ project.id }}">
+                            <img src="/{{ project.image_file }}" alt="" class="top-image">
+                            <button hidden>More</button>
+                            <div class="cardy-body">
+                                <h4 class="card-title">{{project.name[:13]}}...</h4>
+                                <p class="card-content">{{project.description[:40]}}...</p>
+                                <button>View</button>
+                            </div>
+                        </a>
+                    </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="lead">No Projects</p>
+            {% endif %}
+            <section id="more">
+                    <h1 class="content-title">Programming Stack</h1>
+                    <p class="card-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab cum distinctio earum facere pariatur, repellat saepe sequi voluptates! Architecto asperiores dolores maiores maxime natus, obcaecati qui quo sapiente tempora voluptates!</p>
+                    <a href="{{ url_for('project_list') }}">Learn more</a>
+            </section>
+        </div>
+    </div>
+</section>
+
+
+    {% block footer %}
+    {% endblock footer %}
+{% endblock body %}

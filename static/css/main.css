@@ -1,0 +1,244 @@
+/*theme colors*/
+/*.theme{*/
+/*    dark primary: #0288D1*/
+/*    primary:#03A9F4*/
+/*}*/
+body{
+    margin:0;
+    font-family: Arial,Helvetica,monospace,sans-serif;
+    background-color: #ffffff;
+}
+header{
+    height: 70vh;
+    background-image: url('../images/bg-images/bg2.jpg');
+    font-weight: bold;
+    padding-left: 20px;
+}
+.navbar-light .navbar-nav .nav-link{
+    padding-left: 20px;
+}
+header .navbar-nav .nav-item{
+    border: 3px #ffffff solid ;
+    margin:10px ;
+    border-radius:25px ;
+    width: 120px;
+    font-size: 20px;
+
+}
+header .navbar-nav .nav-item:hover{
+    border: 1px #ffffff solid ;
+    margin:14px ;
+    border-radius:25px ;
+
+
+}
+.navbar a .nav-item{
+    color: red;
+}
+
+/*Global styles*/
+.content-title{
+    color: #ffffff;
+    font-weight: bold;
+    font-family: monospace;
+    padding-top: 20px;
+    font-size: 2em;
+    text-align: left;
+}
+/*header section*/
+
+/*Section A*/
+#section-a{
+    padding-top:100px;
+    text-align: center;
+    height: 88vh;
+    border-bottom: 1px #cccccc solid;
+}
+#section-a h1{
+    padding-top: 20px;
+}
+
+#section-a p{
+    padding-top: 20px;
+    font-family: monospace;
+}
+
+#section-a .btn-info{
+    font-family: monospace;
+    margin-top:35px
+}
+
+#section-a .bg-image{
+    /*background-image: url("../images/bg-images/bg1.jpg");*/
+    width: 100%;
+    height: 70vh;
+    margin: 0;
+}
+#section-b{
+    /*background-image: url("../images/bg-images/bg2.jpg");*/
+}
+#section-b{
+    height: 100vh;
+    margin:0;
+    border-radius: 25px;
+}
+.section-b .bottom{
+    border-radius: 50%;
+}
+.section-b #moreInfo{
+    text-align: center;
+    color: #ffffff;
+    padding-top: 70px;
+}
+#section-b .card:hover{
+    border: 1px solid #0288D1 ;
+}
+/*Navbar styling*/
+#section-c #section-d{
+    /*background-color: #0288D1;*/
+    color:  #0288D1;
+    height: 90vh;
+    margin:0;
+    border-top: 2px solid  #03A9F4;
+
+}
+#section-c .content-title{
+    color: #000000;
+}
+#section-c .card-framework{
+    border: 2px solid #ffffff;
+    color: #0288D1;
+    padding: 10px;
+    border-radius: 17px;
+    text-align: left;
+    margin-bottom: 40px;
+    font-weight: bold;
+    font-family: monospace;
+
+}
+#section-c .card-framework:hover{
+    border: 1px solid  #0288D1;
+    border-radius: 15px;
+
+}
+
+#section-c img{
+    float: left;
+    height: 220px;
+    padding:5px;
+    width: 240px;
+    border-radius: 50%;
+}
+.nav-item{
+    font-family: monospace;
+    font-size: 1.3em;
+    color: #03A9F4;
+
+}
+.content-title{
+    text-align: center;
+    padding: 20px;
+    color: #03A9F4;
+
+}
+
+.card{
+    height: 500px;
+    margin: 18px;
+    width: 250px;
+    overflow: hidden;
+    /*border: none;*/
+}
+.card .card-img-top{
+    height: 270px;
+    border-radius: 50%;
+    padding: 3px;
+    width: 250px;
+}
+.card .card-title{
+    text-align: center;
+    font-size: 1.5em;
+    padding-top: 10px;
+}
+.card #seperator{
+    border: 2px solid #000000;
+}
+
+/*footer section*/
+#footer{
+    background-image: url("../images/bg-images/bg2.jpg");
+    height: 40vh;
+    padding-top: 60px;
+    padding-left:30px;
+    color: white;
+    font-family: monospace;
+    border-top: 2px solid  #03A9F4;
+    position: relative;
+}
+#footer .aside_2 input[type="text"],input[type="email"], textarea, .btn-send{
+    width: 80%;
+    border-radius: 10px;
+    border:2px #03A9F4 solid;
+}
+#footer  .btn{
+    margin-top: 10px;
+}
+.ruler{
+    border:1px solid #03A9F4;
+}
+
+/*@media (max-width:768px) {*/
+/*    #section-a{*/
+/*        padding:0;*/
+/*        padding-top: -20px;*/
+/*        overflow: scroll;*/
+/*        height:70vh ;*/
+/*    }*/
+/*    #section-b .card,img{*/
+/*        width: 70%;*/
+/*        overflow: scroll;*/
+/*        margin-left: 90px;*/
+/*        max-height: 90vh;*/
+
+/*    }*/
+/*    */
+/*}*/
+
+
+/*login form*/
+
+form fieldset{
+    border: 1px #555555 solid;
+    border-radius: 25px;
+    background-color: black;
+    padding: 30px;
+    color: #ffffff;
+    font-family: monospace;
+    margin-top: 30px;
+}
+form fieldset input[type='text'],input[type='email'],input[type='password'],textarea{
+    width: 478px;
+
+}
+
+form fieldset input[type='submit']{
+    width: 478px;
+    background-color: #03A9F4;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

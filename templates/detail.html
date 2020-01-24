@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block title %}{{ title }}{% endblock title %}
+
+
+{% block body %}
+    <div class="container-fluid" id="top-section-detail" style="background-image: url('/{{ project.image_file }}')">
+       <h1 class="content-title">{{ project.name }}</h1>
+       <a href="#" class="fa fa-github"></a>
+       <a href="#" class="fa fa-youtube"></a>
+    </div>
+    <div class="container">
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                <ul class=flashes>
+                {% for message in messages %}
+                  <li class="{{category}}">{{ message }}</li>
+                {% endfor %}
+                </ul>
+              {% endif %}
+            {% endwith %}
+            <div class="row">
+                <div class="col col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                    <div class="card" style="width: 100%">
+                          <div class="card-header">
+                            {{ project.name }}
+                          </div>
+                          <div class="card-body">
+                              <img src="/{{ project.image_file }}" class="" alt="" style="width: 100%" >
+
+                          </div>
+                            <div class="card-footer">
+                               <p>Views <span class="badge-info">100</span></p>
+                                 {% if comments %}
+                                    {% for comment in comments[:3]%}
+                                        <div class="comment">
+                                            <img src="/static/images/logos/js2.png" alt="">
+                                            <span>posted on </span>{{ comment.created_at.strftime("%a")}},
+                                            {{ comment.created_at.strftime("%b")}},
+                                            {{ comment.created_at.strftime("%Y")}} @ {{ comment.created_at.strftime("%X")}}
+                                            <hr style="margin: 0;padding: 0">
+                                           <p>{{comment.comment}}</p>
+                                       </div>
+                                    {% endfor %}
+                                {% endif %}
+
+                            </div>
+                    </div>
+                </div>
+                {% if not current_user.is_authenticated %}
+                <div class="col col-sm-8 col-md-8 col-lg-8 col-xl-8">
+                    <div class="card">
+                        <div class="card-header">
+                            ...
+                        </div>
+                        <div class="card-body">
+                            <p>{{ project.description }}</p>
+                            <form action="{{ url_for('comment') }}" method="post">
+                                <input type="number" name="project_id" hidden value="{{ project.id }}">
+                                <textarea name="comment" placeholder="Leave a comment" style="width: 100%"></textarea>
+                                <button type="submit" class="btn btn-info btn-lg">Send</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="col col-sm-8 col-md-8 col-lg-8 col-xl-8">
+                <div class="" style="width: 100%">
+                    <div class="card">
+                        <div class="card-header">
+                            <p>Update {{ project.name }}</p>
+                        </div>
+                        <div class="card-body">
+                            <form action="/project/update/{{ project.id }}" method="post" enctype="multipart/form-data">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label for="">Name</label>
+                                        <input type="text" name="name" class="form-control" value="{{ project.name }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea name="description" style="width: 100%;height: 60%">{{project.description}}</textarea>
+                                    </div>
+                                    <input type="text" name="image-file-old" value="{{ project.image_file }}" hidden>
+                                    <input type="file" name="image-file">
+                                    <a href="/project/delete/{{ project.id }}" class="btn btn-danger">Delete</a>
+                                    <button type="submit" class="btn btn-info" id="trans">Update</button>
+
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        {% endif %}
+        </div>
+    </div>
+{% endblock body %}
