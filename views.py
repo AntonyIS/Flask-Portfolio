@@ -1,5 +1,6 @@
 from app import *
 from models import User, Project,Comment,db
+import config
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -13,7 +14,6 @@ def load_user(user_id):
 def index():
     projects = Project.query.all()[:4]
     return render_template('index.html', title="Antony Injila | Home", projects=projects)
-
 
 @app.route('/dashboard', methods=['GET','POST'])
 def dashboard():
@@ -83,7 +83,7 @@ def login():
         email = request.form.get('email')
         password = request.form.get('password')
 
-        if email == 'admin@example.com' and password == 'pass1234':
+        if email == config.EMAIL and password == config.PASSWORD:
             user = User.query.get(1)
             login_user(user)
             flash(u'login successfully', 'alert alert-success')
