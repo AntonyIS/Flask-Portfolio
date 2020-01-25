@@ -2,7 +2,7 @@ from app import *
 from models import User, Project,Comment,db
 import config
 from werkzeug.utils import secure_filename
-
+import os
 @login_manager.user_loader
 def load_user(user_id):
     # since the user_id is just the primary key of our user table, use it in the query for the user
