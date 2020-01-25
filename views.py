@@ -1,6 +1,7 @@
 from app import *
 from models import User, Project,Comment,db
 import config
+from werkzeug.utils import secure_filename
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -12,7 +13,10 @@ def load_user(user_id):
 @app.route('/')
 @cache.cached(timeout=50)
 def index():
-    projects = Project.query.all()[:4]
+    projects = Project.query.all()
+    if len(projects) >= 4:
+        return render_template('index.html', title="Antony Injila | Home", projects=projects[:4])
+
     return render_template('index.html', title="Antony Injila | Home", projects=projects)
 
 @app.route('/dashboard', methods=['GET','POST'])
@@ -45,23 +49,45 @@ def dashboard_update():
         name = request.form.get('name')
         email = request.form.get('email')
         about = request.form.get('about')
+        technical_expirience = request.form.get('technical_expirience')
+        current_job = request.form.get('current_job')
+        educational_background = request.form.get('educational_background')
+        profession = request.form.get('profession')
+        python = request.form.get('python')
+        javascript = request.form.get('javascript')
+        java = request.form.get('java')
+        django = request.form.get('django')
+        flask = request.form.get('flask')
+        nodejs = request.form.get('nodejs')
+        android = request.form.get('android')
 
         image_file_old = request.form.get('image-file-old')
         f = request.files['image-file']
         filename = secure_filename(f.filename)
-
+        print(image_file_old)
         if filename:
             # location for storing images: Portfolio/static/images/name_of_image
             image_file = "{}/{}/{}".format("static", "images/uploads", filename)
 
             # image upload
             f.save(os.path.join(app.config["UPLOAD_FOLDER"] + "/uploads", filename))
-            project.image_file = image_file
+            user.image_file = image_file
             db.session.commit()
         else:
             user.name = name
             user.email = email
             user.about = about
+            user.technical_expirience = technical_expirience
+            user.current_job = current_job
+            user.educational_background = educational_background
+            user.profession = profession
+            user.python = python
+            user.javascript = javascript
+            user.java = java
+            user.django = django
+            user.flask = flask
+            user.nodejs = nodejs
+            user.android = android
             user.image_file = image_file_old
 
         # save the new changes
@@ -69,12 +95,13 @@ def dashboard_update():
         # return redirect('/project/update/{}/'.format(project_id))
             return redirect(url_for('dashboard'))
 
-    return render_template('detail.html', title="Antony Injila | Project update", project=project)
+    return render_template('dashboard.html', title="Antony Injila | Dashboard update", user=user)
 
 
 @app.route('/about')
 def about():
-    return render_template('about.html', title='Antony Injila | About page')
+    user = User.query.get(1)
+    return render_template('about.html', title='Antony Injila | About page', user=user)
 
 
 @app.route('/login', methods=['GET','POST'])
@@ -128,9 +155,17 @@ def project():
 
 @app.route('/project/detail/<int:project_id>')
 def project_detail(project_id):
-    comments = Comment.query.filter_by(project_id=project_id).all()
+    """
+    Get details of a project given the project_id
+    Get comments posted for this project
+    """
+    # List out the latest comments
+    the_comments = Comment.query.filter_by(project_id=project_id).all()
+    count = len(the_comments)
+    comments =[]
+    for i in range(count):
+        comments.append(the_comments[count-1-i])
     project = Project.query.get(project_id)
-
     return render_template('detail.html', title="Antony Injila | Project details", project=project,comments=comments)
 
 
@@ -175,7 +210,7 @@ def project_delete(project_id):
     project = Project.query.get(project_id)
     db.session.delete(project)
     db.session.commit()
-    return redirect('/')
+    return redirect(url_for('project_list'))
 
 
 @app.route('/comment/project/', methods=['GET','POST'])

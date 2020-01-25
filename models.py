@@ -9,12 +9,23 @@ class User(UserMixin,db.Model):
     about = db.Column(db.String(50),nullable=False)
     image_file = db.Column(db.String(120), nullable=False, default='default.jpg')
     project = db.relationship('Project', backref='user', lazy=True)
+    technical_expirience = db.Column(db.Text, nullable=True)
+    current_job  = db.Column(db.Text, nullable=True)
+    educational_background   = db.Column(db.Text, nullable=True)
+    profession   = db.Column(db.Text, nullable=True)
+    python = db.Column(db.Text, nullable=True)
+    javascript = db.Column(db.Text, nullable=True)
+    java = db.Column(db.Text, nullable=True)
+    django = db.Column(db.Text, nullable=True)
+    flask = db.Column(db.Text, nullable=True)
+    nodejs = db.Column(db.Text, nullable=True)
+    android = db.Column(db.Text, nullable=True)
+
+
 
     def __repr__(self):
         return  "User :{}".format(self.name)
 
-    def __str__(self):
-        return self.name
 
 
 class Project(db.Model):

@@ -3,7 +3,7 @@
 
 
 {% block body %}
-       <div class="container-fliud">
+       <div class="container">
         <div class="row">
             {% with messages = get_flashed_messages(with_categories=true) %}
               {% if messages %}
@@ -14,14 +14,14 @@
                 </ul>
               {% endif %}
             {% endwith %}
-            <div class="col col-sm-6 col-md-6 col-lg-6 col-xl-6">
+            <div class="col col-sm-4 col-md-4 col-lg-4 col-xl-4">
                 <div class="card" style="width: 100%">
                   <div class="card-header">
                     {{ user.name }}
                   </div>
                   <div class="card-body">
 
-                      <img src="/{{ user.image_file }}" class="card-img-top" alt="">
+                      <img src="/{{ user.image_file }}" class="img-thumbnail" alt="">
                       <p class="lead">{{ user.email }}</p>
                       <p class="lead">{{ user.about }}</p>
                       <p class="lead">{{ user.id }}</p>
@@ -32,12 +32,12 @@
 
             </div>
           {% if current_user.is_authenticated %}
-            <div class="col col-sm-6 col-md-6 col-lg-6 col-xl-6">
+            <div class="col col-sm-8 col-md-8 col-lg-8 col-xl-8">
                 <div class="" style="width: 100%">
                     <form action="{{ url_for('dashboard_update') }}" method="post" enctype="multipart/form-data">
                         <fieldset>
                             <div class="form-group">
-                                <label for="">Name</label>
+                                <label for="">Name here</label>
                                 <input type="text" name="name" class="form-control" value="{{ user.name }}">
                             </div>
                               <div class="form-group">
@@ -45,12 +45,56 @@
                                 <input type="email" name="email" class="form-control" value="{{ user.email }}">
                             </div>
                             <div class="form-group">
-                                <textarea name="about">{{user.about}}</textarea>
+                                 <label for="">About me</label>
+                                <textarea name="about" style="width: 100%">{{user.about}}</textarea>
+                            </div>
+                            <div class="form-group">
+                                 <label for="">Technical experience </label>
+                                <textarea name="technical_expirience" style="width: 100%">{{user.technical_expirience}}</textarea>
+                            </div>
+                            <div class="form-group">
+                                 <label for="">Current job </label>
+                                <textarea name="current_job" style="width: 100%">{{user.current_job }}</textarea>
+                            </div>
+                            <div class="form-group">
+                                 <label for="">Educational background</label>
+                                <textarea name="educational_background" style="width: 100%">{{user.educational_background}}</textarea>
+                            </div>
+                            <div class="form-group">
+                                 <label for="">Profession</label>
+                                <textarea name="profession" style="width: 100%">{{user.profession}}</textarea>
+                            </div>
+                            <div class="form-group">
+                                 <label for="">Python</label>
+                                <textarea name="python" style="width: 100%">{{user.python}}</textarea>
+                            </div>
+                            <div class="form-group">
+                                 <label for="">Javascript</label>
+                                <textarea name="javascript" style="width: 100%">{{user.javascript}}</textarea>
+                            </div>
+                            <div class="form-group">
+                                 <label for="">Java</label>
+                                <textarea name="java" style="width: 100%">{{user.java}}</textarea>
+                            </div>
+                            <div class="form-group">
+                                 <label for="">Django</label>
+                                <textarea name="django" style="width: 100%">{{user.django}}</textarea>
+                            </div>
+                            <div class="form-group">
+                                 <label for="">Node Js</label>
+                                <textarea name="nodejs" style="width: 100%">{{user.nodejs}}</textarea>
+                            </div>
+                            <div class="form-group">
+                                 <label for="">Flask</label>
+                                <textarea name="flask" style="width: 100%">{{user.flask}}</textarea>
+                            </div>
+                            <div class="form-group">
+                                 <label for="">Android</label>
+                                <textarea name="android" style="width: 100%">{{user.android}}</textarea>
                             </div>
                             <input type="text" name="image-file-old" value="{{ user.image_file }}" hidden>
                             <input type="file" name="image-file">
-                            <p>{{ user.image_file }}</p>
-                            <button type="submit" class="btn btn-info btn-block">Update</button>
+                            <button type="submit" class="btn btn-info ">Update</button>
                         </fieldset>
                     </form>
                 </div>

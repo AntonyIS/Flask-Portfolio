@@ -5,17 +5,18 @@
 {% block body %}
     <div class="container-fluid" id="top-section-about">
         <h1 class="content-title">Who am I ?</h1>
-    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis consequuntur cum cupiditate
-        dignissimos esse id non nostrum porro provident tempora?
+    <p class="lead">{{user.about}}
     </p>
     </div>
     <div class="container" id="mid-section-about">
         <div class="row">
             <div class="col col-sm-4 col-md-4 col-md-4 col-lg-4 col-xl-4 left">
                 <div class="card">
-                     <img src="/static/images/logos/js2.png" alt="" class="img-thumbnail">
+                     <img src="/{{user.image_file}}" alt="" class="img-thumbnail">
                     <div class="card-body">
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, velit.</p>
+                        <p class="card-text">{{user.name}}</p>
+                        <p class="card-text">{{user.email}}</p>
+                        <p class="card-text">{{user.name}}</p>
 
                     </div>
                 </div>
@@ -29,7 +30,7 @@
                                 Technical experience
                             </div>
                             <div class="card-body">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab fugit laboriosam omnis quidem vel vero!
+                               {{user.technical_expirience}}
                             </div>
                         </div>
                     </div>
@@ -39,7 +40,7 @@
                                 Current job
                             </div>
                             <div class="card-body">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab fugit laboriosam omnis quidem vel vero!
+                                {{user.current_job}}
                             </div>
                         </div>
                     </div>
@@ -49,7 +50,7 @@
                                 Educational background
                             </div>
                             <div class="card-body">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab fugit laboriosam omnis quidem vel vero!
+                                {{user.educational_background}}
                             </div>
                         </div>
                     </div>
@@ -59,7 +60,7 @@
                                 Profession
                             </div>
                             <div class="card-body">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab fugit laboriosam omnis quidem vel vero!
+                                 {{user.profession}}
                             </div>
                         </div>
                     </div>
@@ -77,8 +78,7 @@
                 <div class="card-body">
                     <img src="/static/images/logos/js2.png" alt="">
                     <h5 class="title">Python</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque eaque earum excepturi facere
-                        laudantium perspiciatis quia ratione vel voluptas, voluptatem!
+                    <p>{{user.python}}
                     </p>
                 </div>
             </div>
@@ -88,8 +88,7 @@
                 <div class="card-body">
                     <img src="/static/images/logos/js2.png" alt="">
                      <h5 class="title">JavaScript</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque eaque earum excepturi facere
-                        laudantium perspiciatis quia ratione vel voluptas, voluptatem!
+                    <p>{{user.javascript}}
                     </p>
                 </div>
             </div>
@@ -101,8 +100,7 @@
                 <div class="card-body">
                     <img src="/static/images/logos/js2.png" alt="">
                      <h5 class="title">Java</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque eaque earum excepturi facere
-                        laudantium perspiciatis quia ratione vel voluptas, voluptatem!
+                    <p>{{user.java}}
                     </p>
                 </div>
             </div>
@@ -111,9 +109,8 @@
             <div class="card">
                 <div class="card-body">
                     <img src="/static/images/logos/js2.png" alt="">
-                     <h5 class="title">Kotlin</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque eaque earum excepturi facere
-                        laudantium perspiciatis quia ratione vel voluptas, voluptatem!
+                     <h5 class="title">Java</h5>
+                    <p>{{user.java}}
                     </p>
                 </div>
             </div>
@@ -132,8 +129,7 @@
                                 <p>Django</p>
                             </div>
                                 <p class="card-text">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aspernatur assumenda earum
-                                    ex illo incidunt natus nesciunt obcaecati provident quo?
+                                   {{user.django}}
                                 </p>
                                 <button class="btn btn-info">View</button>
                         </div>
@@ -146,8 +142,7 @@
                                 <p>Flask</p>
                             </div>
                                 <p class="card-text">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aspernatur assumenda earum
-                                    ex illo incidunt natus nesciunt obcaecati provident quo?
+                                    {{user.flask}}
                                 </p>
                                 <button class="btn btn-info">View</button>
                         </div>
@@ -161,8 +156,7 @@
                                 <p>Node Js</p>
                             </div>
                                 <p class="card-text">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aspernatur assumenda earum
-                                    ex illo incidunt natus nesciunt obcaecati provident quo?
+                                   {{user.nodejs}}
                                 </p>
                                 <button class="btn btn-info">View</button>
                         </div>
