@@ -3,15 +3,16 @@ from models import User, Project,Comment,db
 import config
 from werkzeug.utils import secure_filename
 import os
+from services import comment_count
+
+
 @login_manager.user_loader
 def load_user(user_id):
     # since the user_id is just the primary key of our user table, use it in the query for the user
     return User.query.get(int(user_id))
 
-
-
 @app.route('/')
-@cache.cached(timeout=50)
+# @cache.cached(timeout=50)
 def index():
     projects = Project.query.all()
     if len(projects) >= 4:
@@ -19,8 +20,10 @@ def index():
 
     return render_template('index.html', title="Antony Injila | Home", projects=projects)
 
+
 @app.route('/dashboard', methods=['GET','POST'])
 def dashboard():
+    projects = Project.query.all()
     if request.form and request.files:
         name = request.form.get('name')
         email = request.form.get('email')
@@ -39,17 +42,20 @@ def dashboard():
         user = User.query.get(1)
         return render_template('dashboard.html',title="Antony Injila | Dashboard",user=user )
     user = User.query.get(1)
-    return render_template('dashboard.html', title="Antony Injila | Dashboard", user=user)
+    count = len(projects)
+
+    return render_template('dashboard.html', title="Antony Injila | Dashboard", user=user,count=count, projects=projects)
 
 
 @app.route('/dashboard/update', methods=['GET','POST'])
 def dashboard_update():
+    projects = Project.query.all()
     user = User.query.get(1)
     if request.method == "POST":
         name = request.form.get('name')
         email = request.form.get('email')
         about = request.form.get('about')
-        technical_expirience = request.form.get('technical_expirience')
+        technical_experience = request.form.get('technical_experience')
         current_job = request.form.get('current_job')
         educational_background = request.form.get('educational_background')
         profession = request.form.get('profession')
@@ -64,7 +70,8 @@ def dashboard_update():
         image_file_old = request.form.get('image-file-old')
         f = request.files['image-file']
         filename = secure_filename(f.filename)
-        print(image_file_old)
+
+        print()
         if filename:
             # location for storing images: Portfolio/static/images/name_of_image
             image_file = "{}/{}/{}".format("static", "images/uploads", filename)
@@ -77,7 +84,7 @@ def dashboard_update():
             user.name = name
             user.email = email
             user.about = about
-            user.technical_expirience = technical_expirience
+            user.technical_experience = technical_experience
             user.current_job = current_job
             user.educational_background = educational_background
             user.profession = profession
@@ -95,7 +102,7 @@ def dashboard_update():
         # return redirect('/project/update/{}/'.format(project_id))
             return redirect(url_for('dashboard'))
 
-    return render_template('dashboard.html', title="Antony Injila | Dashboard update", user=user)
+    return render_template('dashboard.html', title="Antony Injila | Dashboard update", user=user, projects=projects)
 
 
 @app.route('/about')

@@ -86,7 +86,7 @@ header button:hover{
 .cardy{
     width: 280px;
     border: 2px solid #212121;
-    border-radius: 15px;
+    -moz-border-radius-topleft: 15px;
     max-height: 500px;
     margin-bottom: 30px;
 }
@@ -94,7 +94,7 @@ header button:hover{
     width: 100%;
     height: 200px;
     margin-bottom: 4px;
-    border-radius:15px ;
+    border-radius-bottomright:15px ;
 }
 .cardy .cardy-body{
     padding: 10px;
@@ -312,6 +312,7 @@ footer span{
 #mid-section-about .left .card{
     box-shadow: 3px 3px 3px 3px rgba(71, 163, 196, 0.62);
     height: 500px;
+    line-height: 0;
 }
 
 #mid-section-about .right .card{
@@ -366,4 +367,43 @@ footer span{
     font-weight: bold;
 
 
+}
+
+/*Dashbaord*/
+#dashboard {
+    margin-top: 30px;
+}
+#dashboard #left {
+    /*background-color: red;*/
+}
+#dashboard #left .card{
+    padding: 0;
+    height: 500px;
+    margin: 0;
+    box-shadow: 3px 3px 3px 3px #03A9F4;
+}
+#dashboard #left img{
+
+    width: 100%;
+    height: 400px;
+    border-bottom: 1px #cccccc solid;
+}
+#dashboard #left .card-body{
+    padding-top: 10px;
+    margin: 5px;
+    line-height: 0;
+}
+#dashboard #left .card-body p{
+    font-weight: bold;
+    padding-bottom: 5px;
+    padding-top: 10px;
+}
+#dashboard #right{
+    font-weight: bold;
+}
+
+#dashboard #right input[type='text'],input[type='email'], textarea{
+    border: 2px solid #03A9F4;
+    border-radius: 10px;
+    padding: 10px;
 }
