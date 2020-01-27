@@ -16,6 +16,11 @@ login_manager = LoginManager()
 login_manager.login_view = 'login'
 login_manager.init_app(app)
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + '/Portfolio/'
+SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASE_DIR, 'portfolio.sqlite')
+SQLALCHEMY_TRACK_MODIFICATIONS = False
+UPLOAD_FOLDER = os.path.join(BASE_DIR,'static/image')
+
 
 from views import *
 
